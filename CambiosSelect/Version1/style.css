@@ -1,0 +1,20 @@
+.profesor {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+
+.profesor p {
+    margin: 0;
+}
+
+.profesor a {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
