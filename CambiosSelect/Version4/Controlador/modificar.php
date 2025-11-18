@@ -1,6 +1,6 @@
 <?php
 
-require_once 'consultas.php';
+require_once '../modelo/consultas.php';
 
 $idProfesor = $_GET["id"];
 $bd = new Consultas();
@@ -18,13 +18,12 @@ if($nuevoNombre ==""){
     </form>
 <?php
 
-    
 }else{
     if($nuevoNombre != ""){
         $bd->modificar($idProfesor,$nuevoNombre);
-        echo '<h2><a href="index.php">Modificado correctamente, vuelve atrás</a></h2>';
+        echo '<h2><a href="../Controlador/listarprofesores.php">Modificado correctamente, vuelve atrás</a></h2>';
     }else{
-        echo '<h2><a href="index.php">Usuario no modificado vuelve atras</a></h2>';
+        echo '<h2><a href="../Controlador/listarprofesores.php">Usuario no modificado vuelve atras</a></h2>';
     }
 }
 

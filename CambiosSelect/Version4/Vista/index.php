@@ -1,18 +1,8 @@
-<?php
-	
-	require_once 'consultas.php';
-	
-	/*Seleccionar datos*/
-	$bd = new Consultas();
-	$resultado = $bd->datosSelect();
-
-?>
-
 <!DOCTYPE html>
 <html>
    <head>
       <title>Título de mi página web</title>
-	  <link rel="stylesheet" href="style.css">
+	  <link rel="stylesheet" href="../vista/style.css">
    </head>
    <body>
         <h3>Profesor</h3>

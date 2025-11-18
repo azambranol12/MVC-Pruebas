@@ -1,6 +1,6 @@
 <?php
 
-require_once 'consultas.php';
+require_once '../modelo/consultas.php';
 
 $idProfesor = $_GET["id"];
 $bd = new Consultas();
@@ -23,9 +23,9 @@ if($confirmacion ==""){
     if($confirmacion != ""){
         if($confirmacion=='1'){
             $bd->borrar($idProfesor);
-            echo '<h2><a href="index.php">Borrado correctamente, vuelve atras</a></h2>';
+            echo '<h2><a href="../Controlador/listarprofesores.php">Borrado correctamente, vuelve atras</a></h2>';
         }else{
-            echo '<h2><a href="index.php">Usuario no borrado vuelve atras</a></h2>';
+            echo '<h2><a href="../Controlador/listarprofesores.php">Usuario no borrado vuelve atras</a></h2>';
         }
     }
 }

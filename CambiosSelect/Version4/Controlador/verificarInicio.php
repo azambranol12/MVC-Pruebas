@@ -1,6 +1,6 @@
 <?php
 
-require_once 'consultas.php';
+require_once '../modelo/consultas.php';
 
 $usuario = isset($_POST["usuario"]) ? $_POST["usuario"] :"" ;
 $contrasenia = isset($_POST["contrasenia"]) ? $_POST["contrasenia"] :"" ;
@@ -15,14 +15,14 @@ if($usuario != "" && $contrasenia != "") {
 
     if($fila) {
         // Login correcto → redirige
-        header('Location:index.php');
+        header('Location:../Controlador/listarprofesores.php');
         exit;
     } else {
-        echo '<h2><a href="iniciosesion.html">Vuelve atrás, usuario o contraseña incorrectos</a></h2>';
+        echo '<h2><a href="../Vista/iniciosesion.html">Vuelve atrás, usuario o contraseña incorrectos</a></h2>';
     }
 
 } else {
-    echo '<h2><a href="iniciosesion.html">Vuelve atrás, rellena ambos campos</a></h2>';
+    echo '<h2><a ../Vista/iniciosesion.html>Vuelve atrás, rellena ambos campos</a></h2>';
 }
 
 
