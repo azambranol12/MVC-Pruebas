@@ -12,7 +12,7 @@
 		
 		public function datosSelect(){
 			
-			echo $sql = "SELECT * FROM profesores;";
+			 $sql = "SELECT * FROM profesores;";
 			return  $resultado = $this->conexion->query($sql);
 		}
 

@@ -3,8 +3,10 @@
 require_once '../modelo/consultas.php';
 
 $idProfesor = $_GET["id"];
+
 $bd = new Consultas();
 $resultado = $bd->nombre($idProfesor);
+
 $fila = $resultado->fetch_assoc();
 
 $nuevoNombre = isset($_POST["nuevoNombre"]) ? $_POST["nuevoNombre"] :"" ;
