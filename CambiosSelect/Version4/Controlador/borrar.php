@@ -23,9 +23,9 @@ if($confirmacion ==""){
     if($confirmacion != ""){
         if($confirmacion=='1'){
             $bd->borrar($idProfesor);
-            echo '<h2><a href="../Controlador/listarprofesores.php">Borrado correctamente, vuelve atras</a></h2>';
+            echo '<h2><a href="../Vista/profesores.php">Borrado correctamente, vuelve atras</a></h2>';
         }else{
-            echo '<h2><a href="../Controlador/listarprofesores.php">Usuario no borrado vuelve atras</a></h2>';
+            echo '<h2><a href="../Vista/profesores.php">Usuario no borrado vuelve atras</a></h2>';
         }
     }
 }

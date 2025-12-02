@@ -15,15 +15,15 @@ if($usuario != "" && $contrasenia != "") {
 
     if($fila) {
         // Login correcto → redirige
-        header('Location:../Controlador/listarprofesores.php');
+        header('Location:../Vista/profesores.php');
         exit;
     } else {
         echo '<h2><a href="../Vista/iniciosesion.html">Vuelve atrás, usuario o contraseña incorrectos</a></h2>';
     }
 
-} else {
-    echo '<h2><a ../Vista/iniciosesion.html>Vuelve atrás, rellena ambos campos</a></h2>';
-}
+    } else {
+        echo '<h2><a ../Vista/iniciosesion.html>Vuelve atrás, rellena ambos campos</a></h2>';
+    }
 
 
 ?>

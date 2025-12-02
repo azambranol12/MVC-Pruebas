@@ -21,9 +21,9 @@ if($nuevoNombre ==""){
 }else{
     if($nuevoNombre != ""){
         $bd->modificar($idProfesor,$nuevoNombre);
-        echo '<h2><a href="../Controlador/listarprofesores.php">Modificado correctamente, vuelve atrás</a></h2>';
+        echo '<h2><a href="../Vista/profesores.php">Modificado correctamente, vuelve atrás</a></h2>';
     }else{
-        echo '<h2><a href="../Controlador/listarprofesores.php">Usuario no modificado vuelve atras</a></h2>';
+        echo '<h2><a href="../Vista/profesores.php">Usuario no modificado vuelve atras</a></h2>';
     }
 }
 
