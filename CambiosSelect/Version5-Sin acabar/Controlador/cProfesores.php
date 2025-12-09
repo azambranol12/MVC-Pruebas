@@ -23,7 +23,7 @@ class CProfesores{
             
             if ($confirmacion == '1') {
                 $this->objMprofesores->borrar($idProfesor);
-                echo "<h1>Borrado correctamente. <a href='/Vista/profesores.php'>Volver</a></h1>";
+                echo "<h1>Borrado correctamente. <a href='Vista/profesores.php'>Volver</a></h1>";
             } else {
                 echo "<h1>Operación cancelada. <a href='Vista/profesores.php'>Volver</a></h1>";
             }
