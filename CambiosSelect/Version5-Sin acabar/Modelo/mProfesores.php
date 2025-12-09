@@ -1,8 +1,8 @@
 <?php
 
-	require_once 'conexion.php';
+	require_once __DIR__ . '/../Config/conexion.php';
 	
-	class Consultas extends Conexion
+	class MProfesores extends Conexion
 	{
 		
 		public function __construct()
@@ -12,10 +12,7 @@
 		
 		public function datosSelect(){
 			
-			echo $sql = "SELECT profesores.nombre as nombreProfe, clase, observaciones, inscripciones_alumnos.nombre as nombreAlumno,
-			profesores.idProfesor FROM profesores INNER JOIN inscripciones ON profesores.idProfesor = inscripciones.idTutor INNER JOIN 
-			inscripciones_alumnos ON inscripciones_alumnos.idInscripcion = inscripciones.idInscripcion
-			ORDER BY profesores.idProfesor;";
+			 $sql = "SELECT * FROM profesores;";
 			return  $resultado = $this->conexion->query($sql);
 		}
 
@@ -34,7 +31,13 @@
 		public function nombre($idProfesor)
 		{
 			$sql = "SELECT nombre FROM profesores WHERE idProfesor = $idProfesor;";
-			return  $resultado = $this->conexion->query($sql);
+			$resultado = $this->conexion->query($sql);
+			if ($resultado && $resultado->num_rows > 0) {
+
+				$fila = $resultado->fetch_assoc(); 
+
+				return $fila['nombre'];
+			}
 		}
 
 		public function inicioSesion($usuario, $contrasenia)
