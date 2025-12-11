@@ -4,5 +4,10 @@ require_once __DIR__ . '/Controlador/cProfesores.php';
 
 $objCusuario = new CProfesores();
 
-$objCusuario->modificar();
+$datos = $objCusuario->modificar();
+
+extract($datos);
+
+require_once 'Vista/'. $objCusuario->vista;
+
 ?>

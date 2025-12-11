@@ -1,6 +1,7 @@
 <?php
 class CProfesores{
     private $objMprofesores;
+    public $vista;
 
     function __construct(){
         require_once __DIR__ . '/../Modelo/mProfesores.php';
@@ -13,8 +14,9 @@ class CProfesores{
 
         $nombre = $this->objMprofesores->nombre($idProfesor);
 
-        require_once __DIR__ . '/../Vista/confirmarBorrar.php';
+        $this->vista = 'confirmarBorrar.php';
         
+        return ['nombre' => $nombre];
     }
 
     public function modificar(){
@@ -27,7 +29,9 @@ class CProfesores{
 
             $nombre = $this->objMprofesores->nombre($idProfesor);
 
-            require_once __DIR__ . '/../Vista/confirmarModificar.php';
+                $this->vista = 'confirmarModificar.php';
+        
+                 return ['nombre' => $nombre];
 
         }else{
             if($nuevoNombre != ""){
