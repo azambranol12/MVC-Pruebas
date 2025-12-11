@@ -11,46 +11,22 @@ class CProfesores{
     public function gestionarBorrado() {
 
         $idProfesor = isset($_GET["id"]) ? $_GET["id"] : "";
-
-        $confirmacion = isset($_POST["confirm"]) ? $_POST["confirm"] : "";
-
-        if ($confirmacion === "") {
             
-            $nombre = $this->objMprofesores->nombre($idProfesor);
-            
-            require_once __DIR__ . '/../Vista/confirmarBorrar.php';
-
-        } else {
-            
-            if ($confirmacion == '1') {
-                $this->objMprofesores->borrar($idProfesor);
-                echo "<h1>Borrado correctamente. <a href='Vista/profesores.php'>Volver</a></h1>";
-            } else {
-                echo "<h1>Operación cancelada. <a href='Vista/profesores.php'>Volver</a></h1>";
-            }
-        }
+        $this->objMprofesores->borrar($idProfesor);
+        
+        $this->vista = 'listarProfesores.php';
+        
     }
 
     public function modificar(){
 
         $idProfesor = isset($_GET["id"]) ? $_GET["id"] : "";
 
-        $nuevoNombre = isset($_POST["nuevoNombre"]) ? $_POST["nuevoNombre"] : "";
+        $nombre = $this->objMprofesores->nombre($idProfesor);
 
-        if($nuevoNombre ==""){
+        $this->vista = 'confirmarModificar.php';
 
-            $nombre = $this->objMprofesores->nombre($idProfesor);
-
-            require_once __DIR__ . '/../Vista/confirmarModificar.php';
-
-        }else{
-            if($nuevoNombre != ""){
-                $this->objMprofesores->modificar($idProfesor,$nuevoNombre);
-                echo '<h2><a href="Vista/profesores.php">Modificado correctamente, vuelve atrás</a></h2>';
-            }else{
-                echo '<h2><a href="Vista/profesores.php">Usuario no modificado vuelve atras</a></h2>';
-            }
-        }
+        return $nombre;
     }
 
     public function listarProfesores()
@@ -60,9 +36,16 @@ class CProfesores{
         return ['profesores' => $profesores];
     }
 
-    public function borrar()
+    public function confirmarModificacion()
     {
-        
+        $idProfesor= $_POST['idOriginal']; 
+
+        $nombreModificado = $_POST['nuevoNombre'];
+
+        $this->objMprofesores->modificar($idProfesor,$nombreModificado);
+
+        $this->vista = 'listarProfesores.php';
+
     }
 
 }

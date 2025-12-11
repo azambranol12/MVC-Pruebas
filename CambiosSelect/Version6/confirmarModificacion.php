@@ -4,8 +4,7 @@ require_once __DIR__ . '/Controlador/cProfesores.php';
 
 $objCusuario = new CProfesores();
 
-$objCusuario->gestionarBorrado();
+$objCusuario->confirmarModificacion();
 
-require_once __DIR__ .'../'.$objCusuario->vista;
-
+require_once __DIR__ .'/'.$objCusuario->vista;
 ?>
