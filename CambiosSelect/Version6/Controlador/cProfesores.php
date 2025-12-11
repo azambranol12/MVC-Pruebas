@@ -1,6 +1,6 @@
 <?php
 class CProfesores{
-    private $objMprofesores;
+    public $objMprofesores;
     public $vista;
 
     function __construct(){
@@ -12,10 +12,23 @@ class CProfesores{
 
         $idProfesor = isset($_GET["id"]) ? $_GET["id"] : "";
 
-        $nombre = $this->objMprofesores->nombre($idProfesor);
+        $confirmacion = isset($_POST["confirm"]) ? $_POST["confirm"] : "";
 
-        $this->vista = 'profesores.php';
-        
+        if ($confirmacion === "") {
+            
+            $nombre = $this->objMprofesores->nombre($idProfesor);
+            
+            require_once __DIR__ . '/../Vista/confirmarBorrar.php';
+
+        } else {
+            
+            if ($confirmacion == '1') {
+                $this->objMprofesores->borrar($idProfesor);
+                echo "<h1>Borrado correctamente. <a href='Vista/profesores.php'>Volver</a></h1>";
+            } else {
+                echo "<h1>Operación cancelada. <a href='Vista/profesores.php'>Volver</a></h1>";
+            }
+        }
     }
 
     public function modificar(){
@@ -28,9 +41,7 @@ class CProfesores{
 
             $nombre = $this->objMprofesores->nombre($idProfesor);
 
-                $this->vista = 'confirmarModificar.php';
-        
-                 return ['nombre' => $nombre];
+            require_once __DIR__ . '/../Vista/confirmarModificar.php';
 
         }else{
             if($nuevoNombre != ""){
@@ -41,4 +52,17 @@ class CProfesores{
             }
         }
     }
+
+    public function listarProfesores()
+    {
+        $this->vista = 'profesores.php';
+        $profesores =  $this->objMprofesores->listarProfesores();
+        return ['profesores' => $profesores];
+    }
+
+    public function borrar()
+    {
+        
+    }
+
 }
