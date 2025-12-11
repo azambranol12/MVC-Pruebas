@@ -13,15 +13,15 @@ class MProfesores extends Conexion
     {
         $sql = "SELECT idProfesor, nombre FROM profesores;";
         $stmt = $this->conexion->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); //// fetchAll devuelve todas las filas de la consulta
     }
 
     public function borrar($idProfesor)
     {
         $sql = "DELETE FROM profesores WHERE idProfesor = :idProfesor;";
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bindParam(':idProfesor', $idProfesor, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt = $this->conexion->prepare($sql); ///// Cuando tenemos un where necesitamos hacer un prepare a la consulta
+        $stmt->bindParam(':idProfesor', $idProfesor, PDO::PARAM_INT); /////// El param_int sirve para decir que tipo de dato es idProfesor
+        $stmt->execute(); ////Se ejecuta la consulta
     }
 
     public function modificar($idProfesor, $nuevoNombre)
