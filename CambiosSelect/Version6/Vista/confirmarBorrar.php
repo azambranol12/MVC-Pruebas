@@ -6,7 +6,7 @@
       <meta charset="UTF-8">
     </head>
     <body>
-    <form method="post" action="">
+    <form method="GET" action="borrar.php">
         <?php echo '¿Estás seguro de borrar al este profesor con nombre '.$nombre .'?'; ?>
         <button type="submit" name="confirm" value="1">Sí</button>
         <button type="submit" name="confirm" value="0">No</button>
