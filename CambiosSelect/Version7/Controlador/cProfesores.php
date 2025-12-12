@@ -2,6 +2,7 @@
 class CProfesores{
     public $objMprofesores;
     public $vista;
+    public $metodoSiguiente;
 
     function __construct(){
         require_once __DIR__ . '/../Modelo/mProfesores.php';
@@ -13,8 +14,9 @@ class CProfesores{
         $idProfesor = isset($_GET["id"]) ? $_GET["id"] : "";
             
         $this->objMprofesores->borrar($idProfesor);
-        
-        $this->vista = 'listarProfesores.php';
+
+        Header('Location: index.php');
+        exit();
         
     }
 
@@ -24,14 +26,14 @@ class CProfesores{
 
         $nombre = $this->objMprofesores->nombre($idProfesor);
 
-        $this->vista = 'confirmarModificar.php';
+        $this->vista = 'confirmarModificar';
 
         return $nombre;
     }
 
     public function listarProfesores()
     {
-        $this->vista = 'profesores.php';
+        $this->vista = 'profesores';
         $profesores =  $this->objMprofesores->listarProfesores();
         return ['profesores' => $profesores];
     }
@@ -43,8 +45,9 @@ class CProfesores{
         $nombreModificado = $_POST['nuevoNombre'];
 
         $this->objMprofesores->modificar($idProfesor,$nombreModificado);
-
-        $this->vista = 'listarProfesores.php';
+        
+        Header('Location: index.php');
+        exit();
 
     }
 

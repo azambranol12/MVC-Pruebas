@@ -3,7 +3,7 @@
 require_once 'Config/config.php';
 
 if(!isset($_GET['c'])){
-    $_GET['c'] == DEF_CONTROLADOR;
+    $_GET['c'] = DEF_CONTROLADOR;
 }
 
 if(!isset($_GET['m'])){
@@ -20,13 +20,20 @@ $objControlador = new $controlador();
 
 $datos = [];
 
-if(method_exists($objControlador,$_GET['m'] )){
-    $datos = $objControlador->{$_GET['m']}();
-    extract($datos);
+if (method_exists($objControlador, $_GET['m'])) {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $datos = $objControlador->{$_GET['m']}($_POST);
+    } 
+    else {
+        $datos = $objControlador->{$_GET['m']}();
+    }
+
 }
 
-require_once RUTA_VISTA . $objControlador->vista . '.php';
-
-
-
+if ($objControlador->vista != '') {
+    if (is_array($datos))
+        extract($datos);
+    require_once RUTA_VISTA . $objControlador->vista . '.php';
+}
 ?>
